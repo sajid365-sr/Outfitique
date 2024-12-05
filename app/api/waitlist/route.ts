@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
 import { z } from "zod";
+import { sendThankYouEmail } from "@/utils/sendEmail";
 
 const waitlistSchema = z.object({
   email: z.string().email("Invalid email address"),
@@ -29,6 +30,8 @@ export async function POST(req: Request) {
         email,
       },
     });
+
+    await sendThankYouEmail(email);
 
     return NextResponse.json(
       { message: "Successfully joined waitlist", subscriber },
