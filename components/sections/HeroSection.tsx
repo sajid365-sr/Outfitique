@@ -9,19 +9,15 @@ import { ArrowRight } from "lucide-react";
 export function HeroSection() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
-  const handleWaitlistSubmit = async (email: string) => {
-    // TODO: Add email to waitlist
-    console.log(email);
-  };
-
   return (
     <motion.section
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
-      className="relative bg-[url('https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover bg-center text-white h-screen px-4 sm:px-6 lg:px-8 flex items-center"
+      className="relative bg-[url('https://img.freepik.com/free-photo/digital-environment-scene_23-2151873117.jpg?t=st=1733610020~exp=1733613620~hmac=99826aa360be1fab1ec807bc3a32b7fc4e25c21dd26abc3f9fc349e2c99e4a4c&w=826')] bg-cover bg-center text-white h-screen px-4 sm:px-6 lg:px-8 flex items-center"
     >
-      <div className="absolute inset-0 bg-black opacity-70 mix-blend-multiply"></div>
+      <div className="absolute inset-0 bg-black opacity-70" />{" "}
+      {/* Black overlay */}
       <div className="relative z-10 max-w-7xl mx-auto">
         <motion.div
           initial={{ y: 20, opacity: 0 }}
@@ -46,7 +42,6 @@ export function HeroSection() {
           </Button>
         </motion.div>
       </div>
-
       <WaitlistDialog isOpen={isDialogOpen} onOpenChange={setIsDialogOpen} />
     </motion.section>
   );

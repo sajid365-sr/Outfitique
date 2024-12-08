@@ -24,7 +24,7 @@ export function MouseGlow() {
 
   return (
     <motion.div
-      className="fixed inset-0 z-30 pointer-events-none"
+      className="fixed inset-0 pointer-events-none"
       style={{
         background: "transparent",
       }}

@@ -3,29 +3,34 @@
 import Link from "next/link";
 import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logo from "@/public/logo.png";
+import Image from "next/image";
 
 const productLinks = [
-  { name: "Features", href: "#" },
-  { name: "How it Works", href: "#" },
+  { name: "Features", href: "#features" },
+  { name: "How it Works", href: "#howItWorks" },
   { name: "Pricing", href: "#" },
   { name: "FAQ", href: "#" },
 ];
 
 const companyLinks = [
-  { name: "About Us", href: "#" },
   { name: "Blog", href: "#" },
   { name: "Careers", href: "#" },
+  { name: "About Us", href: "#" },
   { name: "Contact", href: "#" },
 ];
 
 const legalLinks = [
   { name: "Privacy Policy", href: "#" },
   { name: "Terms of Service", href: "#" },
-  { name: "Cookie Policy", href: "#" },
 ];
 
 const socialLinks = [
-  { icon: Facebook, href: "#", label: "Facebook" },
+  {
+    icon: Facebook,
+    href: "https://www.facebook.com/outfitique/",
+    label: "Facebook",
+  },
   { icon: Twitter, href: "#", label: "Twitter" },
   { icon: Instagram, href: "#", label: "Instagram" },
   { icon: Linkedin, href: "#", label: "LinkedIn" },
@@ -37,9 +42,9 @@ export default function Footer() {
       <div className="container mx-auto px-4 py-8 sm:py-12">
         <div className="grid grid-cols-2 gap-8 sm:grid-cols-2 md:grid-cols-4 lg:gap-12">
           <div className="col-span-2 sm:col-span-2 md:col-span-1">
-            <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4">
-              Outfit Genius
-            </h3>
+            <Link href="/" className="flex-shrink-0">
+              <Image src={logo} alt="Outfitique" width={180} />
+            </Link>
             <p className="text-sm sm:text-base text-[#AEC3B0] mb-4">
               Your personal wardrobe assistant powered by AI
             </p>
@@ -52,7 +57,11 @@ export default function Footer() {
                   className="hover:bg-[#345635]/50 text-[#AEC3B0] hover:text-white"
                   asChild
                 >
-                  <Link href={social.href} aria-label={social.label}>
+                  <Link
+                    href={social.href}
+                    target="_blank"
+                    aria-label={social.label}
+                  >
                     <social.icon className="h-5 w-5" />
                   </Link>
                 </Button>
@@ -117,8 +126,7 @@ export default function Footer() {
 
         <div className="border-t border-gray-800 mt-6 sm:mt-8 pt-6 sm:pt-8 text-center">
           <p className="text-sm sm:text-base text-[#AEC3B0]">
-            &copy; {new Date().getFullYear()} Outfit Genius. All rights
-            reserved.
+            &copy; {new Date().getFullYear()} Outfitique. All rights reserved.
           </p>
         </div>
       </div>

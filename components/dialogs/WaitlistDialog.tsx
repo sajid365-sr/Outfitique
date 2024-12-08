@@ -23,6 +23,7 @@ export function WaitlistDialog({ isOpen, onOpenChange }: WaitlistDialogProps) {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isAlreadyRegistered, setIsAlreadyRegistered] = useState(false);
+  const [isLoading, setIsLoading] = useState(false); // New state for loading
   const { toast } = useToast();
 
   const handleMouseMove = (e: React.MouseEvent) => {
@@ -30,7 +31,9 @@ export function WaitlistDialog({ isOpen, onOpenChange }: WaitlistDialogProps) {
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
+    console.log(email);
     e.preventDefault();
+    setIsLoading(true); // Set loading to true when submitting
     try {
       const { data } = await axios.post("/api/waitlist", { email });
       setIsAlreadyRegistered(data.message === "Email already registered");
@@ -45,6 +48,8 @@ export function WaitlistDialog({ isOpen, onOpenChange }: WaitlistDialogProps) {
           ? error.response?.data?.error || error.message
           : "Failed to join waitlist",
       });
+    } finally {
+      setIsLoading(false); // Stop loading regardless of success or failure
     }
   };
 
@@ -124,9 +129,35 @@ export function WaitlistDialog({ isOpen, onOpenChange }: WaitlistDialogProps) {
                 />
                 <Button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-[#4dd193] to-purple-500 text-white hover:opacity-90 relative overflow-hidden group"
+                  className={`w-full bg-gradient-to-r from-[#4dd193] to-purple-500 text-white hover:opacity-90 relative overflow-hidden group ${isLoading ? "opacity-50 cursor-not-allowed" : ""}`}
                 >
-                  <span className="relative z-10">Join Waitlist</span>
+                  {isLoading ? (
+                    <span className="relative z-10 flex items-center justify-center">
+                      <svg
+                        className="animate-spin h-5 w-5 mr-3 text-white"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <circle
+                          className="opacity-25"
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="currentColor"
+                          strokeWidth="4"
+                        ></circle>
+                        <path
+                          className="opacity-75"
+                          fill="currentColor"
+                          d="M4 12a8 8 0 018-8v8H4z"
+                        ></path>
+                      </svg>
+                      Joining...
+                    </span>
+                  ) : (
+                    <span className="relative z-10">Join Waitlist</span>
+                  )}
                   <motion.div
                     className="absolute inset-0 bg-gradient-to-r from-purple-500 to-[#4dd193] opacity-0 group-hover:opacity-100 transition-opacity"
                     initial={false}

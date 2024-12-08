@@ -1,54 +1,35 @@
 import { NextResponse } from "next/server";
-import prisma from "@/lib/prisma";
-import { z } from "zod";
-import { sendThankYouEmail } from "@/utils/sendEmail";
-
-const waitlistSchema = z.object({
-  email: z.string().email("Invalid email address"),
-});
+import { sendThankYouEmail } from "../../../utils/sendEmail";
+import { prisma } from "../../../lib/prisma";
 
 export async function POST(req: Request) {
-  try {
-    const body = await req.json();
-    const { email } = waitlistSchema.parse(body);
+  const { email } = await req.json();
 
-    // Check if email already exists
-    const existingSubscriber = await prisma.waitlistSubscriber.findUnique({
-      where: { email },
-    });
+  // Validate email
+  if (!email) {
+    return NextResponse.json({ message: "Email is required" }, { status: 400 });
+  }
 
-    if (existingSubscriber) {
-      return NextResponse.json(
-        { message: "Email already registered" },
-        { status: 200 }
-      );
-    }
-
-    // Create new waitlist subscriber
-    const subscriber = await prisma.waitlistSubscriber.create({
-      data: {
-        email,
-      },
-    });
-
-    await sendThankYouEmail(email);
-
+  // Save email to the database
+  const existingUser = await prisma.waitlistSubscriber.findUnique({
+    where: { email },
+  });
+  if (existingUser) {
     return NextResponse.json(
-      { message: "Successfully joined waitlist", subscriber },
-      { status: 201 }
-    );
-  } catch (error) {
-    if (error instanceof z.ZodError) {
-      return NextResponse.json(
-        { error: "Invalid email address" },
-        { status: 400 }
-      );
-    }
-
-    console.error("Waitlist error:", error);
-    return NextResponse.json(
-      { error: "Something went wrong" },
-      { status: 500 }
+      { message: "Email already registered" },
+      { status: 200 }
     );
   }
+
+  const newUser = await prisma.waitlistSubscriber.create({
+    data: { email },
+  });
+
+  // Send thank you email
+  await sendThankYouEmail(email);
+
+  return NextResponse.json(
+    { message: "Successfully registered", user: newUser },
+    { status: 200 }
+  );
 }

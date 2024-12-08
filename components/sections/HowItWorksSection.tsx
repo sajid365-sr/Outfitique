@@ -8,25 +8,26 @@ import { useRef } from "react";
 const steps = [
   {
     step: 1,
-    title: "Scan Your Clothes",
-    description:
-      "Take photos of your clothing items to build your digital wardrobe",
+    title: "Build Your Digital Closet",
+    description: "Snap photos of your clothes to create your virtual wardrobe.",
     image:
-      "https://plus.unsplash.com/premium_photo-1664202526475-8f43ee70166d?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3",
+      "https://img.freepik.com/premium-photo/woman-observing-futuristic-digital-clothing-display-hightech-fashion-store_124507-303538.jpg?w=996",
   },
   {
     step: 2,
-    title: "Organize Your Wardrobe",
-    description: "Categorize and tag your items for better organization",
+    title: "Get AI Outfit Ideas",
+    description:
+      "Let AI match your clothes into stunning outfit combinations just for you.",
     image:
-      "https://images.unsplash.com/photo-1662986788594-01dcf0af44bd?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3",
+      "https://img.freepik.com/premium-photo/meta-retail-concept-collage_23-2151310817.jpg?w=826",
   },
   {
     step: 3,
-    title: "Get AI Suggestions",
-    description: "Receive personalized outfit suggestions based on your style",
+    title: "Style Your Virtual You",
+    description:
+      "Dress your AI avatar with curated outfits to see your new look come to life.",
     image:
-      "https://plus.unsplash.com/premium_photo-1683120972279-87efe2ba252f?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3",
+      "https://cdn.prod.website-files.com/63da3362f67ed6f71c9489c1/6616f5fb4b69465cef77425e_Untitled%20design%20-%202024-04-10T132626.765.png",
   },
 ];
 
@@ -35,7 +36,7 @@ export function HowItWorksSection() {
   const isInView = useInView(ref, { once: true });
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8">
+    <section id="howItWorks" className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto" ref={ref}>
         <motion.div
           initial={{ y: 20, opacity: 0 }}
@@ -47,7 +48,7 @@ export function HowItWorksSection() {
             How It Works
           </h2>
           <p className="text-[#6B8F71] max-w-2xl mx-auto">
-            Get started with Outfit Genius in three simple steps
+            Get started with Outfitique in three simple steps
           </p>
         </motion.div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

@@ -9,8 +9,36 @@ import { GlobalGlow } from "@/components/effects/GlobalGlow";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Outfitique",
-  description: "Your personal wardrobe assistant",
+  title: "Outfitique - Your AI Personal Wardrobe Assistant",
+  description:
+    "Outfitique is your ultimate AI-powered wardrobe assistant, helping you curate outfits, manage your closet, and receive personalized fashion suggestions.",
+  keywords:
+    "AI wardrobe assistant, outfit suggestions, personal stylist, fashion management, closet organization",
+  author: "Outfitique Team",
+  openGraph: {
+    title: "Outfitique - Your AI Personal Wardrobe Assistant",
+    description:
+      "Discover the future of fashion with Outfitique, your AI-powered wardrobe assistant.",
+    url: "https://outfitique.com",
+    site_name: "Outfitique",
+    images: [
+      {
+        url: "https://outfitique.com/logo.png",
+        width: 800,
+        height: 600,
+        alt: "Outfitique Logo",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@Outfitique",
+    title: "Outfitique - Your AI Personal Wardrobe Assistant",
+    description:
+      "Your AI-powered wardrobe assistant for personalized outfit suggestions.",
+    image: "https://outfitique.com/logo.png",
+  },
+  metadataBase: new URL("https://outfitique.com"),
 };
 
 export default function RootLayout({
@@ -20,8 +48,26 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning className="dark">
+      <head>
+        <link rel="canonical" href="https://outfitique.com" />
+        <meta name="robots" content="index, follow" />
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=YOUR_GA_TRACKING_ID"
+        ></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'YOUR_GA_TRACKING_ID');
+            `,
+          }}
+        />
+      </head>
       <body
-        className={`${inter.className} antialiased`}
+        className={`${inter.className} antialiased relative`}
         suppressHydrationWarning
       >
         <ThemeProvider
@@ -31,7 +77,7 @@ export default function RootLayout({
           forcedTheme="dark"
           disableTransitionOnChange
         >
-          <GlobalGlow />
+          {/* <GlobalGlow /> */}
           <Navbar />
           {children}
           <Footer />

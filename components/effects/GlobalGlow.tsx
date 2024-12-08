@@ -23,7 +23,7 @@ export function GlobalGlow() {
   if (!isClient) return null;
 
   return (
-    <div className="fixed inset-0 z-30 pointer-events-none overflow-hidden">
+    <div className="fixed inset-0 pointer-events-none overflow-hidden">
       <GlowingCircle
         mousePosition={mousePosition}
         size={300}
