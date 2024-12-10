@@ -41,7 +41,7 @@ export function FeaturesSection() {
           <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-[#4dd193] via-purple-500 to-[#4dd193] bg-[length:200%_100%] animate-gradient text-transparent bg-clip-text">
             Revolutionize Your Daily Style
           </h2>
-          <p className="text-[#e1fae3] max-w-2xl mx-auto">
+          <p className="text-[#e1fae3] max-w-2xl text-lg mx-auto">
             Experience the perfect blend of AI technology and fashion expertise
             to elevate your wardrobe management
           </p>

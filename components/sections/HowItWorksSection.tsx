@@ -4,30 +4,30 @@ import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 import { Card, CardContent, CardHeader } from "@/components/ui/Card";
 import { useRef } from "react";
+import img1 from "@/assets/scan your clothes.jpg";
+import img2 from "@/assets/get AI suggestions.jpg";
+import img3 from "@/assets/style your own AI avatar.jpg";
 
 const steps = [
   {
     step: 1,
     title: "Build Your Digital Closet",
     description: "Snap photos of your clothes to create your virtual wardrobe.",
-    image:
-      "https://img.freepik.com/premium-photo/woman-observing-futuristic-digital-clothing-display-hightech-fashion-store_124507-303538.jpg?w=996",
+    image: img1,
   },
   {
     step: 2,
     title: "Get AI Outfit Ideas",
     description:
       "Let AI match your clothes into stunning outfit combinations just for you.",
-    image:
-      "https://img.freepik.com/premium-photo/meta-retail-concept-collage_23-2151310817.jpg?w=826",
+    image: img2,
   },
   {
     step: 3,
     title: "Style Your Virtual You",
     description:
       "Dress your AI avatar with curated outfits to see your new look come to life.",
-    image:
-      "https://cdn.prod.website-files.com/63da3362f67ed6f71c9489c1/6616f5fb4b69465cef77425e_Untitled%20design%20-%202024-04-10T132626.765.png",
+    image: img3,
   },
 ];
 
@@ -47,7 +47,7 @@ export function HowItWorksSection() {
           <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-[#4dd193] via-purple-500 to-[#4dd193] bg-[length:200%_100%] animate-gradient text-transparent bg-clip-text">
             How It Works
           </h2>
-          <p className="text-[#6B8F71] max-w-2xl mx-auto">
+          <p className="text-[#6B8F71] text-lg max-w-2xl mx-auto">
             Get started with Outfitique in three simple steps
           </p>
         </motion.div>
