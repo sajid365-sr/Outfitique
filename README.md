@@ -108,9 +108,13 @@ Outfitique revolutionizes fashion by merging advanced AI with everyday wardrobe 
 
 ---
 
-## License & Contact 📄
+## License
 
 This project is licensed under the [MIT License](LICENSE.txt).
+
+---
+
+## Contact
 
 For questions, suggestions, or issues, please open an issue on GitHub or contact [contact@outfitique.com](mailto:contact@outfitique.com).
 
